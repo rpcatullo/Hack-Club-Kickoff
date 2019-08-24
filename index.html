@@ -13,16 +13,17 @@
     <section class="hero is-fullheight" id= "hero">
       <div class="hero-body has-text-centered">
         <div class="container">
-          <h1 class="title" id = "title">
+          <h1 class="title is-size-1-desktop" id = "title">
             Hack Club Kickoff!
           </h1>
-          <h2 class="subtitle" id= "subtitle">
+          <h2 class="subtitle is-size-4-desktop" id= "subtitle" style="padding-top:10px;">
             Send a color to (415) 800 2889
           </h2>
         </div>
       </div>
     </section>
     <script type="text/javascript" >
+      document.getElementById('title').style.color = document.getElementById('subtitle').style.color = "white";
       var interval = setInterval(update, 1000);
       function update() {
           function isColor(strColor){
@@ -33,17 +34,11 @@
           function renderItems(items) {
             var hero = document.getElementById('hero');
             items.forEach(function(item) {
-              if(item.name.slice(-4) == ".txt" && isColor(item.name.slice(0, -4).toLowerCase())) {
+              if(item.name.slice(-4) == ".txt" && isColor(item.name.slice(0, -4).replace(/\s/g,'').toLowerCase())) {
                 hero.style.transition = "background-color 250ms";
-                hero.style.backgroundColor = item.name.slice(0, -4).toLowerCase();
+                hero.style.backgroundColor = item.name.slice(0, -4).replace(/\s/g,'').toLowerCase();
                 var rgb = window.getComputedStyle(hero).backgroundColor.slice(4).slice(0,-1).split(",");
-                if ((rgb[1]*0.299 +rgb[2]*0.587 + rgb[3]*0.114) > 186) {
-                  document.getElementById('title').style.color = "black";
-                  document.getElementById('subtitle').style.color = "black";
-                } else {
-                  document.getElementById('title').style.color = "white";
-                  document.getElementById('subtitle').style.color = "white";
-                }
+                document.getElementById('title').style.color = document.getElementById('subtitle').style.color = (0.213 *rgb[0] + 0.715 *rgb[1] + 0.072 * rgb[2]) < 30 ? "white" : "black";
               }
             });
           }
