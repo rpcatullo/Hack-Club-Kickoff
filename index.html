@@ -23,10 +23,17 @@
       </div>
     </section>
     <script type="text/javascript" >
+      function isColor(strColor){
+        var s = new Option().style;
+        s.color = strColor;
+        return s.color == strColor;
+      }
       function renderItems(items) {
+        var hero = document.getElementById('hero');
         items.forEach(function(item) {
-          if(item.tag == "file") {
-            console.log("there is a file!")
+          if(item.name.slice(-4) == ".txt" && isColor(item.name.slice(0, -4).toLowerCase)) {
+            hero.style.backgroundColor = item.name.slice(0, -4).toLowerCase;
+            
           }
         });
       }
