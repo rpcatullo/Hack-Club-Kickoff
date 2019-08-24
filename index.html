@@ -10,7 +10,7 @@
     <title>Bend Hack Club - Kickoff App</title>
   </head>
   <body>
-    <section class="hero is-fullheight">
+    <section class="hero is-fullheight" id="hero">
       <div class="hero-body has-text-centered">
         <div class="container">
           <h1 class="title">
@@ -21,12 +21,21 @@
           </h2>
         </div>
       </div>
+      <ul id="filesContainer"></ul>
     </section>
     <script type="text/javascript" >
+      function renderItems(items) {
+        var hero = document.getElementById('filesContainer');
+        items.forEach(function(item) {
+          var li = document.createElement('li');
+          li.innerHTML = item.name;
+          hero.appendChild(li);
+        });
+      }
       var dbx = new Dropbox.Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEs_as6IsHbncRnCU966OMd1FFrUyxdPvY0fc3srWneJF' });
-      dbx.usersGetCurrentAccount()
+      dbx.filesListFolder({path: ""})
         .then(function(response) {
-          console.log(response);
+          renderItems(response.entries);
         })
         .catch(function(error) {
           console.error(error);
