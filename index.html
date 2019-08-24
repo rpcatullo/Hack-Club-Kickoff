@@ -22,7 +22,9 @@
       </div>
     </section>
     <script type="text/javascript" >
-      var dbx = new Dropbox({ accessToken: vpU0TG6jo7AAAAAAAAAAEIjXCXmw_Duj-RUSltEfQA8SpMkUoZCrDu44UYaxfWZI });
+      require('isomorphic-fetch'); // or another library of choice.
+      var Dropbox = require('dropbox').Dropbox;
+      var dbx = new Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEf779u9rP6Rp3Ecd2dd5jJuRlpmjNG_ZvqHVuwfSqjy1' });
       dbx.usersGetCurrentAccount()
         .then(function(response) {
           console.log(response);
