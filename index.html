@@ -23,28 +23,31 @@
       </div>
     </section>
     <script type="text/javascript" >
-      function isColor(strColor){
-        var s = new Option().style;
-        s.color = strColor;
-        return s.color == strColor;
-      }
-      function renderItems(items) {
-        var hero = document.getElementById('hero');
-        items.forEach(function(item) {
-          if(item.name.slice(-4) == ".txt" && isColor(item.name.slice(0, -4).toLowerCase())) {
-            hero.style.backgroundColor = item.name.slice(0, -4).toLowerCase();
-            
+      var interval = setInterval(update, 1000);
+      function update() {
+          function isColor(strColor){
+            var s = new Option().style;
+            s.color = strColor;
+            return s.color == strColor;
           }
-        });
+          function renderItems(items) {
+            var hero = document.getElementById('hero');
+            items.forEach(function(item) {
+              if(item.name.slice(-4) == ".txt" && isColor(item.name.slice(0, -4).toLowerCase())) {
+                hero.style.backgroundColor = item.name.slice(0, -4).toLowerCase();
+
+              }
+            });
+          }
+          var dbx = new Dropbox.Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEs_as6IsHbncRnCU966OMd1FFrUyxdPvY0fc3srWneJF' });
+          dbx.filesListFolder({path: "", recursive: true})
+            .then(function(response) {
+              renderItems(response.entries);
+            })
+            .catch(function(error) {
+              console.error(error);
+            });
       }
-      var dbx = new Dropbox.Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEs_as6IsHbncRnCU966OMd1FFrUyxdPvY0fc3srWneJF' });
-      dbx.filesListFolder({path: "", recursive: true})
-        .then(function(response) {
-          renderItems(response.entries);
-        })
-        .catch(function(error) {
-          console.error(error);
-        });
     </script>
   </body>
 </html>
