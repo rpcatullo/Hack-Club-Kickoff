@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+    <script src="/__build__/Dropbox-sdk.min.js"></script>
     <title>Bend Hack Club - Kickoff App</title>
   </head>
   <body>
@@ -24,7 +25,9 @@
       </div>
     </section>
     <script type="text/javascript" >
-      var dbx = new Dropbox.Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEf779u9rP6Rp3Ecd2dd5jJuRlpmjNG_ZvqHVuwfSqjy1' });
+      var fetch = require('isomorphic-fetch'); // or another library of choice.
+      var Dropbox = require('dropbox').Dropbox;
+      var dbx = new Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEf779u9rP6Rp3Ecd2dd5jJuRlpmjNG_ZvqHVuwfSqjy1', fetch: fetch });
       dbx.usersGetCurrentAccount()
         .then(function(response) {
           console.log(response);
