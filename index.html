@@ -21,19 +21,17 @@
           </h2>
         </div>
       </div>
-      <ul id="filesContainer"></ul>
     </section>
     <script type="text/javascript" >
-      function renderItems(items) {
-        var hero = document.getElementById('filesContainer');
+      function renderItems(items) 
         items.forEach(function(item) {
-          var li = document.createElement('li');
-          li.innerHTML = item.name;
-          hero.appendChild(li);
+          if(item.tag == "file") {
+            console.log("there is a file!")
+          }
         });
       }
       var dbx = new Dropbox.Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEs_as6IsHbncRnCU966OMd1FFrUyxdPvY0fc3srWneJF' });
-      dbx.filesListFolder({path: ""})
+      dbx.filesListFolder({path: "", recursive: true})
         .then(function(response) {
           renderItems(response.entries);
         })
