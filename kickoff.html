@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/4.0.30/Dropbox-sdk.js" integrity="sha256-B2oONvdKJ3qkdcGzlVZwhFz55Pk6/+clzI+9hbK1C24=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+    <title>Riverbend Hack Club | Kickoff</title>
+  </head>
+  <body style="background-image: linear-gradient(to right bottom, rgb(228, 45, 66), rgb(228, 115, 45));">
+    <a href="index.html">
+      <img style="position: absolute; top: 10px; left: 0; border: 0; width: 230px; z-index: 999" src="hackclub--flag.svg" alt="Hack Club">
+    </a>
+
+    <section class="hero is-fullheight" id= "hero">
+      <div class="hero-body has-text-centered">
+        <div class="container">
+          <h1 class="title is-size-1-desktop is-size-2-tablet is-size-2-mobile" id = "title" style="font-family: Nunito, sans-serif;">
+            <b>Hack Club Kickoff!</b>
+          </h1>
+          <h2 class="subtitle is-size-4-desktop is-size-4-tablet is-size-4-mobile" id= "subtitle" style="padding-top:10px; font-family: Roberto, sans-serif;">
+            Send a color to the remind
+          </h2>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript" >
+      document.getElementById('title').style.color = document.getElementById('subtitle').style.color = "white";
+      function isColor(strColor){
+        var s = new Option().style;
+        s.color = strColor;
+        return s.color == strColor;
+      }
+      function renderItems(items) {
+        var hero = document.getElementById('hero');
+        items.forEach(function(item) {
+          if(item.name.slice(-4) == ".txt" && isColor(item.name.slice(0, -4).replace(/\s/g,'').toLowerCase())) {
+            hero.style.transition = "background-color 250ms";
+            hero.style.backgroundColor = item.name.slice(0, -4).replace(/\s/g,'').toLowerCase();
+            var rgb = window.getComputedStyle(hero).backgroundColor.slice(4).slice(0,-1).split(",");
+            document.getElementById('title').style.color = document.getElementById('subtitle').style.color = (0.213 *rgb[0] + 0.715 *rgb[1] + 0.072 * rgb[2]) < 95 ? "white" : "black";
+            document.getElementById('title').style.transition = document.getElementById('subtitle').style.transition = "color 500ms";
+          }
+        });
+      }
+      var dbx = new Dropbox.Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEs_as6IsHbncRnCU966OMd1FFrUyxdPvY0fc3srWneJF' });
+      var interval = setInterval(update, 1000);
+      function update() {
+        dbx.filesListFolder({path: "", recursive: true})
+          .then(function(response) {
+            renderItems(response.entries);
+          })
+          .catch(function(error) {
+            console.error(error);
+          });
+      }
+    </script>
+  </body>
+</html>

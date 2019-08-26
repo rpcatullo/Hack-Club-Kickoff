@@ -1,56 +1,256 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/4.0.30/Dropbox-sdk.js" integrity="sha256-B2oONvdKJ3qkdcGzlVZwhFz55Pk6/+clzI+9hbK1C24=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
-    <title>Bend Hack Club - Kickoff App</title>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <meta name="description" content="Riverbend Hack Club is an afterschool high school coding club on Wednesdays in Room 261. We provide students with coding resources as well as a vast network of peers interested in programming to connect with.">
+      <meta name="keywords" content="High School Coding,Hack Club,Riverbend Hack Club,Virginia Coding,Virginia Hack Club,Virginia Computer Science,Riverbend Computer Science,Bend Hack Club,Riverbend,Riverbend High School">
+      <title>Riverbend Hack Club | Learn to Code</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto&display=swap" rel="stylesheet">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      <style>
+        .invisible {
+          margin-left: -230px;
+          transition: margin-left 500ms;
+        }
+        .visible {
+          margin-left: 0px;
+          transition: margin-left 500ms;
+        }
+        .navbar-item.is-activated, .navbar-link.is-activated {
+          color: white !important;
+        }
+        .navbar-item:hover, .navbar-link:hover {
+          transition: color 250ms;
+          color: #ccc !important;
+        }
+        .bar {
+          color: white;
+        }
+        .page-title, .page-subtitle {
+          font-family: Nunito, sans-serif;
+          margin-left: 50px;
+        }
+        .title, .subtitle {
+          font-family: Nunito, sans-serif;
+        }
+        .article-title {
+          padding: 20px;
+          color: white;
+        }
+        .hero {
+          padding-bottom: 75px;
+        }
+        #img-container-1 {
+          box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.2);
+          max-width: 426.666px;
+          max-height: 284.375px;
+        }
+        @media all and (max-width:1600px) and (min-width: 1024px) {
+          .article:hover {
+            transition: all 250ms;
+            transform: scale(1.05);
+            box-shadow: 5px 5px #E14D31;
+          }
+        }
+        .article {
+          margin: 0 15px 0 15px;
+        }
+        .section {
+          padding: 30px;
+        }
+      </style>
+      <title>Riverbend Hack Club | Learn to Code</title>
+    </head>
   </head>
-  <body style="background-image: linear-gradient(to right bottom, rgb(228, 45, 66), rgb(228, 115, 45));">
-    <img style="position: absolute; top: 10px; left: 0; border: 0; width: 230px; z-index: 999" src="hackclub--flag.svg" alt="Hack Club">
-    <section class="hero is-fullheight" id= "hero">
-      <div class="hero-body has-text-centered">
+  <body>
+    <a href="index.html">
+      <img id="hack_club_logo" class="visible" style="position: absolute; top: 10px; left: 0; border: 0; width: 230px; z-index: 999" src="hackclub--flag.svg" alt="Hack Club">
+    </a>
+    <nav class="navbar has-fixed-top is-transparent" role="navigation" aria-label="main navigation" style="background-image: linear-gradient(to right bottom, rgb(228, 45, 66), rgb(228, 115, 45));">
+      <div class="navbar-brand">
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+          <span aria-hidden="true" class="bar" ></span>
+          <span aria-hidden="true" class="bar" ></span>
+          <span aria-hidden="true" class="bar" ></span>
+        </a>
+      </div>
+
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item is-activated" href="index.html">
+            Home
+          </a>
+
+          <a class="navbar-item is-activated" href="kickoff.html">
+            Kickoff
+          </a>
+
+          <div class="navbar-item is-activated has-dropdown is-hoverable">
+            <a class="navbar-link is-activated is-arrowless">
+              More
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Join our Team
+              </a>
+              <a class="navbar-item" href="hackathons.hackclub.com">
+                Hackathons
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="hackclub.com">
+                Hack Club's Website
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-white is-outlined" id="button">
+                <strong>Sign up</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="hero is-dark is-fullheight">
+      <div class="hero-body">
         <div class="container">
-          <h1 class="title is-size-1-desktop" id = "title">
-            Hack Club Kickoff!
+          <h1 class="title page-title is-size-1-desktop is-size-2-tablet is-size-2-mobile">
+            Riverbend Hack Club
           </h1>
-          <h2 class="subtitle is-size-4-desktop" id= "subtitle" style="padding-top:10px;">
-            Send a color to (415) 800 2889
+          <h2 class="subtitle page-subtitle is-size-4-desktop is-size-5-tablet is-size-5-mobile">
+            Every Wednesday @ Room 261
           </h2>
         </div>
       </div>
     </section>
-    <script type="text/javascript" >
-      document.getElementById('title').style.color = document.getElementById('subtitle').style.color = "white";
-      var interval = setInterval(update, 1000);
-      function update() {
-          function isColor(strColor){
-            var s = new Option().style;
-            s.color = strColor;
-            return s.color == strColor;
-          }
-          function renderItems(items) {
-            var hero = document.getElementById('hero');
-            items.forEach(function(item) {
-              if(item.name.slice(-4) == ".txt" && isColor(item.name.slice(0, -4).replace(/\s/g,'').toLowerCase())) {
-                hero.style.transition = "background-color 250ms";
-                hero.style.backgroundColor = item.name.slice(0, -4).replace(/\s/g,'').toLowerCase();
-                var rgb = window.getComputedStyle(hero).backgroundColor.slice(4).slice(0,-1).split(",");
-                document.getElementById('title').style.color = document.getElementById('subtitle').style.color = (0.213 *rgb[0] + 0.715 *rgb[1] + 0.072 * rgb[2]) < 30 ? "white" : "black";
-              }
+    <section class="section" style="background-image: linear-gradient(to right bottom, rgb(228, 45, 66), rgb(228, 115, 45)); height: 100% !important;">
+      <div class="columns is-vcentered" style="height: 100%; margin-top: 10%;">
+        <div class="column is-size-6-mobile" style="color: white; font-family: Helvetica, sans-serif; padding-left: 30px;">
+          <h2 class="title is-size-2-desktop is-size-3-tablet is-size-3-mobile" data-aos="fade-right" style="color: white; padding-bottom: 10px;">
+            Learn.
+          </h2>
+          <p>Hack Club is a place where you can come to learn all types of computer science. We keep a record of our upcoming workshops so you know exactly what we will be doing at each meeting.
+          Don't know how to code? No problem! Just show up to a meeting and you will have a handle on anything from python to web development by the end of the day.</p>
+        </div>
+        <div class="column">
+          <div class="container" id="img-container-1">
+            <figure>
+              <img src="hack_club_image_1.jpeg" alt="Hack Club Founders">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-vcentered" style="height: 100%; margin-top: 20%;">
+        <div class="column">
+          <div class="container" id="img-container-1">
+            <figure>
+              <img src="coding_image.jpg" alt="Hack Club Founders">
+            </figure>
+          </div>
+        </div>
+        <div class="column is-size-6-mobile" style="color: white; font-family: Helvetica, sans-serif; padding-left: 30px;">
+          <h2 class="title is-size-2-desktop is-size-3-tablet is-size-3-mobile" data-aos="fade-left" style="color: white; padding-bottom: 10px;">
+            Code.
+          </h2>
+          The purpose of Hack Club is to teach <b>you</b> how to code. We take suggestions on topics you would like to explore. To start with, we will focus on web design and the fundamentals of HTML, CSS, and JavaScript. The rest of the year is up to you! We can cover Artificial Intelligence with Python, databases and brute force hacking with SQL, and the concepts of Ethical Hacking.
+        </div>
+      </div>
+      <div class="columns is-vcentered" style="height: 100%; margin-top: 20%; margin-bottom: 10%;">
+        <div class="column is-size-6-mobile" style="color: white; font-family: Helvetica, sans-serif; padding-left: 30px;">
+          <h2 class="title is-size-2-desktop is-size-3-tablet is-size-3-mobile" data-aos="fade-right" style="color: white; padding-bottom: 10px;">
+            Connect.
+          </h2>
+          <p>Hack Club doesn't end at each meeting! Hack Club is an international network of amatuer computer scientists. The main form of communication with Hack Club is our slack, which you can join and ask questions as well as communicate with high school programmers from around the world. Have a question our leaders can't answer? Ask the slack! Want to plan a hackathon? Find co-organizers with our vast community of tech enthusiasts! </p>
+        </div>
+        <div class="column">
+          <div class="container" id="img-container-1">
+            <figure>
+              <img src="slack_image.png" alt="Hack Club Founders">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" style="background-color: #393939;">
+      <h2 class="title article-title is-size-2-desktop is-size-3-tablet is-size-3-mobile">
+        Articles by Hackers
+      </h2>
+      <div class="columns">
+        <div class="column box article is-size-6-desktop">
+          <h3 style="font-family: Rubik,Lato,lucida grande,lucida sans unicode,Tahoma,Sans-Serif; color: #444; font-size: 12px;"><b>css-tricks.com</b></h1>
+          <h2 style="font-family: Open Sans; font-size:13px; margin-bottom: 10px;"><a href="https://css-tricks.com/a-beginners-journey-to-launching-a-website/" style="color: black;"><b>A Beginner's Journey to Launching a Website</b></h2>
+          <p style="font-family: Open Sans; font-size:12px; padding: 20px 0 10px 0; border-top: 1px solid black;">
+            In September 2018, I was just a few months into my journey of learning web development. As I'm sure is the case with many new developers, it was a big task for me to learn not only the basic skills required, but also keeping current with the fast-moving industry. Just as I was getting to the level where it felt as though I could build a simple website, I started to realize that it was only the first step. <br>Opening up a few HTML pages stored locally on my laptop felt like a million miles away from being able to say to someone, "Hey, check out my website, live on the actual internet!" But I did it! And the best part is<a href="https://blogs.oracle.com/cyberthreats-in-higher-education%3a-security-is-everyone%e2%80%99s-responsibility" style="color: blue;">...</a></p>
+        </div>
+        <div class="column box article">
+          <h3 style="font-family: Rubik,Lato,lucida grande,lucida sans unicode,Tahoma,Sans-Serif; color: #444; font-size: 12px;"><b>blog.oracle.com</b></h1>
+          <h2 style="font-family: Open Sans; font-size:13px; margin-bottom: 10px;"><a href="https://blogs.oracle.com/cyberthreats-in-higher-education%3a-security-is-everyone%e2%80%99s-responsibility" style="color: black;"><b>Cyberthreats in Higher Education: Security Is Everyone’s Responsibility</b></a></h2>
+          <p style="font-family: Open Sans; font-size:12px; padding: 20px 0 10px 0; border-top: 1px solid black;">Higher education is under assault in more ways than one. Institutions struggle as low graduation rates skyrocket. Whether it be the increasing burden of student debt, funding challenges, or the recent alert from the Department of Education (DOE) regarding the exploitation of a system vulnerability hitting dozens of universities, higher education has a lot to do. The DOE states that 62 colleges or universities have been affected. The DOE memo cites, “Criminal elements have been actively scanning the internet looking for institutions to victimize through this vulnerability and developing lists<a href="https://blogs.oracle.com/cyberthreats-in-higher-education%3a-security-is-everyone%e2%80%99s-responsibility" style="color: blue;">...</a></p>
+        </div>
+        <div class="column box article">
+          <h3 style="font-family: Rubik,Lato,lucida grande,lucida sans unicode,Tahoma,Sans-Serif; color: #444; font-size: 12px;"><b>myprogrammingblog.com</b></h1>
+          <h2 style="font-family: Open Sans; font-size:13px; margin-bottom: 10px;"><a href="http://myprogrammingblog.com/2018/10/17/programming-learned-faster-7-tips/" style="color: black;"><b>Programming Is Learned Faster With These 7 Tips</b></a></h2>
+          <p style="font-family: Open Sans; font-size:12px; padding: 20px 0 10px 0; border-top: 1px solid black;">Programming is one of the fastest growing industries. The U.S. Bureau of Labor Statistics anticipates development and programming jobs to grow 17% from 2014 to 2024 which is faster than the majority of other industries. Even if you don’t have a computer science degree, you can make a career for yourself as a programmer.
+With so much information just clicks away nowadays, you can learn how to program on your own time as long as you have some basic computer skills. Actually, you’ll probably never stop learning. As a programmer, technology is always changing, and<a href="http://myprogrammingblog.com/2018/10/17/programming-learned-faster-7-tips/" style="color: blue;">...</a></p>
+        </div>
+        <div class="column box article" style="margin-bottom: 25px !important;">
+          <h3 style="font-family: Rubik,Lato,lucida grande,lucida sans unicode,Tahoma,Sans-Serif; color: #444; font-size: 12px;"><b>thecrazyprogrammer.com</b></h1>
+          <h2 style="font-family: Open Sans; font-size:13px; margin-bottom: 10px;"><a href="https://www.thecrazyprogrammer.com/2018/04/most-popular-programming-languages.html" style="color: black;"><b>Top 10 Most Popular Programming Languages in 2018</b></a></h2>
+          <p style="font-family: Open Sans; font-size:12px; padding: 20px 0 10px 0; border-top: 1px solid black;">Here you will know about the most popular programming languages in 2018.<br>Every year a survey is done among the developers and shared on stackoverflow. This year the survey was done among 100,000 developers and on the basis of that I am sharing the list of famous programming technologies.<br>In this list JavaScript is the most used programming language and maintaining this position from last 5 years. Being one of the fastest growing language, popularity of python is increasing day by day. This year python outranked c#, last year it outranked php.<a href="https://www.thecrazyprogrammer.com/2018/04/most-popular-programming-languages.html" style="color: blue;">...</a></p>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', () => {
+
+          // Get all "navbar-burger" elements
+          const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+          const $navbarItems = Array.prototype.slice.call(document.querySelectorAll('.is-activated'), 0);
+          const $navbarDropdowns = Array.prototype.slice.call(document.querySelectorAll('.has-dropdown'), 0);
+
+          // Check if there are any navbar burgers
+          if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach( el => {
+              el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+                document.getElementById('hack_club_logo').classList.toggle('invisible');
+                document.getElementById('hack_club_logo').classList.toggle('visible');
+                document.getElementById('button').classList.toggle('is-white');
+                $navbarItems.forEach( el => {
+                  el.classList.toggle('is-activated');
+                });
+              });
             });
           }
-          var dbx = new Dropbox.Dropbox({ accessToken: 'vpU0TG6jo7AAAAAAAAAAEs_as6IsHbncRnCU966OMd1FFrUyxdPvY0fc3srWneJF' });
-          dbx.filesListFolder({path: "", recursive: true})
-            .then(function(response) {
-              renderItems(response.entries);
-            })
-            .catch(function(error) {
-              console.error(error);
+
+          $navbarDropdowns.forEach( el => {
+            el.addEventListener('click', () => {
+              el.classList.toggle('is-active');
             });
-      }
+          });
+        });
+        AOS.init({
+          duration: 600,
+        })
     </script>
   </body>
 </html>
