@@ -21,6 +21,9 @@
           margin-left: 0px;
           transition: margin-left 500ms;
         }
+        .is-invisible {
+          display: none !important;
+        }
         .navbar-item.is-activated, .navbar-link.is-activated {
           color: white !important;
         }
@@ -55,6 +58,14 @@
             transition: all 250ms;
             transform: scale(1.05);
             box-shadow: 5px 5px #E14D31;
+          }
+        }
+        @media all and (max-width:1023px) and (min-width: 0px) {
+          body {
+            overflow-x: hidden;
+          }
+          html {
+            overflow-x: hidden;
           }
         }
         .article {
@@ -159,7 +170,7 @@
         </div>
       </div>
       <div class="columns is-vcentered" style="height: 100%; margin-top: 20%;">
-        <div class="column">
+        <div class="column" id="code-1">
           <div class="container" id="img-container-1">
             <figure>
               <img src="coding_image.jpg" alt="Hack Club Founders">
@@ -171,6 +182,13 @@
             Code.
           </h2>
           The purpose of Hack Club is to teach <b>you</b> how to code. We take suggestions on topics you would like to explore. To start with, we will focus on web design and the fundamentals of HTML, CSS, and JavaScript. The rest of the year is up to you! We can cover Artificial Intelligence with Python, SQL databases and brute force attacks, and the concepts of ethical hacking.
+        </div>
+      </div>
+      <div class="column is-invisible" id="code-2">
+        <div class="container" id="img-container-1">
+          <figure>
+            <img src="ryan_profile.jpg" alt="Hack Club Founders">
+          </figure>
         </div>
       </div>
       <div class="columns is-vcentered" style="height: 100%; margin-top: 20%; margin-bottom: 10%;">
@@ -331,6 +349,16 @@ With so much information just clicks away nowadays, you can learn how to program
         AOS.init({
           duration: 600,
         })
+        window.addEventListener("resize", function(event) {
+          if(window.innerWidth < 768) {
+            document.getElementById('code-1').classList.add('is-invisible');
+            document.getElementById('code-2').classList.remove('is-invisible');
+          }
+          else {
+            document.getElementById('code-1').classList.remove('is-invisible');
+            document.getElementById('code-2').classList.add('is-invisible');
+          }
+        });
     </script>
   </body>
 </html>
