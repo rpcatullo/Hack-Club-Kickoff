@@ -187,7 +187,7 @@
       <div class="column is-invisible" id="code-2">
         <div class="container" id="img-container-1">
           <figure>
-            <img src="ryan_profile.jpg" alt="Hack Club Founders">
+            <img src="coding_image.jpg" alt="Hack Club Founders">
           </figure>
         </div>
       </div>
@@ -301,15 +301,24 @@ With so much information just clicks away nowadays, you can learn how to program
     </section>
     <footer class="footer">
       <div class="content has-text-centered">
-        <p>
+        <p class="is-size-7-mobile">
           Website by <a href="https://ryancatullo.com">Ryan Catullo</a>. The source code is licensed under
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. Take a look at the code @ our <a href="https://github.com/rpcatullo/Hack-Club-Kickoff">Github</a> <br>
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. Take a look at the code @ our <a href="https://github.com/rpcatullo/Hack-Club-Kickoff">Github</a> <br><br>
           CSS framework by <a href="https://bulma.io">Bulma</a> and web hosting by <a href="https://www.netlify.com/">Netlify</a>
         </p>
       </div>
     </footer>
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', () => {
+
+        if(window.innerWidth < 768) {
+          document.getElementById('code-1').classList.add('is-invisible');
+          document.getElementById('code-2').classList.remove('is-invisible');
+        }
+        else {
+          document.getElementById('code-1').classList.remove('is-invisible');
+          document.getElementById('code-2').classList.add('is-invisible');
+        }
 
           // Get all "navbar-burger" elements
           const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
